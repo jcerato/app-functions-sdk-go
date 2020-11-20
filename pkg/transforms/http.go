@@ -23,10 +23,10 @@ import (
 	"io/ioutil"
 	"net/http"
 
-	"github.com/edgexfoundry/app-functions-sdk-go/pkg/util"
+	"github.com/jcerato/app-functions-sdk-go/pkg/util"
 
-	"github.com/edgexfoundry/app-functions-sdk-go/appcontext"
 	"github.com/edgexfoundry/go-mod-core-contracts/clients"
+	"github.com/jcerato/app-functions-sdk-go/appcontext"
 )
 
 // HTTPSender ...
@@ -48,13 +48,14 @@ func NewHTTPSender(url string, mimeType string, persistOnError bool) HTTPSender 
 }
 
 // NewHTTPSenderWithSecretHeader creates, initializes and returns a new instance of HTTPSender configured to use a secret header
-func NewHTTPSenderWithSecretHeader(url string, mimeType string, persistOnError bool, httpHeaderSecretName string, secretPath string) HTTPSender {
+func NewHTTPSenderWithSecretHeader(url string, mimeType string, persistOnError bool, httpHeaderSecretName1 string, httpHeaderSecretName2 string, secretPath string) HTTPSender {
 	return HTTPSender{
-		URL:              url,
-		MimeType:         mimeType,
-		PersistOnError:   persistOnError,
-		SecretHeaderName: httpHeaderSecretName,
-		SecretPath:       secretPath,
+		URL:               url,
+		MimeType:          mimeType,
+		PersistOnError:    persistOnError,
+		SecretHeaderName1: httpHeaderSecretName1,
+		SecretHeaderName2: httpHeaderSecretName2,
+		SecretPath:        secretPath,
 	}
 }
 
@@ -99,11 +100,12 @@ func (sender HTTPSender) httpSend(edgexcontext *appcontext.Context, params []int
 	}
 	var theSecrets map[string]string
 	if usingSecrets {
-		theSecrets, err = edgexcontext.GetSecrets(sender.SecretPath, sender.SecretHeaderName)
+		theSecrets, err = edgexcontext.GetSecrets(sender.SecretPath, sender.SecretHeaderName1, sender.SecretHeaderName2)
 		if err != nil {
 			return false, err
 		}
-		req.Header.Set(sender.SecretHeaderName, theSecrets[sender.SecretHeaderName])
+		req.Header.Set(sender.SecretHeaderName1, theSecrets[sender.SecretHeaderName1])
+		req.Header.Set(sender.SecretHeaderName2, theSecrets[sender.SecretHeaderName2])
 	}
 
 	req.Header.Set("Content-Type", sender.MimeType)
@@ -136,15 +138,15 @@ func (sender HTTPSender) httpSend(edgexcontext *appcontext.Context, params []int
 
 func (sender HTTPSender) determineIfUsingSecrets() (bool, error) {
 	//check if one field but not others are provided for secrets
-	if sender.SecretPath != "" && sender.SecretHeaderName == "" {
+	if sender.SecretPath != "" && sender.SecretHeaderName1 == "" {
 		return false, errors.New("SecretPath was specified but no header name was provided")
 	}
-	if sender.SecretHeaderName != "" && sender.SecretPath == "" {
+	if sender.SecretHeaderName1 != "" && sender.SecretPath == "" {
 		return false, errors.New("HTTP Header Secret Name was provided but no SecretPath was provided")
 	}
 
 	// not using secrets if both are blank
-	if sender.SecretHeaderName == "" && sender.SecretPath == "" {
+	if sender.SecretHeaderName1 == "" && sender.SecretPath == "" {
 		return false, nil
 	}
 	// using secrets, all required fields are provided

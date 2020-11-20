@@ -18,23 +18,24 @@ package appsdk
 
 import (
 	"fmt"
-	"github.com/gorilla/mux"
-	"github.com/stretchr/testify/assert"
-	"github.com/stretchr/testify/require"
 	"net/http"
 	"os"
 	"reflect"
 	"testing"
 
+	"github.com/gorilla/mux"
+	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
+
 	"github.com/edgexfoundry/go-mod-core-contracts/clients/logger"
 	"github.com/edgexfoundry/go-mod-core-contracts/models"
 
-	"github.com/edgexfoundry/app-functions-sdk-go/appcontext"
-	"github.com/edgexfoundry/app-functions-sdk-go/internal/common"
-	"github.com/edgexfoundry/app-functions-sdk-go/internal/runtime"
-	triggerHttp "github.com/edgexfoundry/app-functions-sdk-go/internal/trigger/http"
-	"github.com/edgexfoundry/app-functions-sdk-go/internal/trigger/messagebus"
-	"github.com/edgexfoundry/app-functions-sdk-go/internal/webserver"
+	"github.com/jcerato/app-functions-sdk-go/appcontext"
+	"github.com/jcerato/app-functions-sdk-go/internal/common"
+	"github.com/jcerato/app-functions-sdk-go/internal/runtime"
+	triggerHttp "github.com/jcerato/app-functions-sdk-go/internal/trigger/http"
+	"github.com/jcerato/app-functions-sdk-go/internal/trigger/messagebus"
+	"github.com/jcerato/app-functions-sdk-go/internal/webserver"
 )
 
 var lc logger.LoggingClient

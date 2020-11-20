@@ -20,7 +20,7 @@ import (
 	"os"
 	"testing"
 
-	. "github.com/edgexfoundry/app-functions-sdk-go/internal/security/fileioperformer"
+	. "github.com/jcerato/app-functions-sdk-go/internal/security/fileioperformer"
 	"github.com/stretchr/testify/assert"
 )
 

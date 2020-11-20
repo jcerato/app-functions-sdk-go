@@ -21,10 +21,10 @@ import (
 	"crypto/x509"
 	"errors"
 
-	"github.com/eclipse/paho.mqtt.golang"
+	mqtt "github.com/eclipse/paho.mqtt.golang"
 	"github.com/edgexfoundry/go-mod-core-contracts/clients/logger"
 
-	"github.com/edgexfoundry/app-functions-sdk-go/internal/security"
+	"github.com/jcerato/app-functions-sdk-go/internal/security"
 )
 
 type mqttSecrets struct {

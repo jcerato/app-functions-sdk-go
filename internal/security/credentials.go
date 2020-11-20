@@ -20,8 +20,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/edgexfoundry/app-functions-sdk-go/internal/common"
-	"github.com/edgexfoundry/app-functions-sdk-go/internal/store/db"
+	"github.com/jcerato/app-functions-sdk-go/internal/common"
+	"github.com/jcerato/app-functions-sdk-go/internal/store/db"
 )
 
 // GetDatabaseCredentials retrieves the login credentials for the database

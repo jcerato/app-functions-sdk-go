@@ -21,10 +21,10 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/edgexfoundry/app-functions-sdk-go/appcontext"
-	"github.com/edgexfoundry/app-functions-sdk-go/pkg/transforms"
-	"github.com/edgexfoundry/app-functions-sdk-go/pkg/util"
 	"github.com/edgexfoundry/go-mod-core-contracts/models"
+	"github.com/jcerato/app-functions-sdk-go/appcontext"
+	"github.com/jcerato/app-functions-sdk-go/pkg/transforms"
+	"github.com/jcerato/app-functions-sdk-go/pkg/util"
 )
 
 const (

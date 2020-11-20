@@ -30,11 +30,11 @@ import (
 	"github.com/edgexfoundry/go-mod-messaging/pkg/types"
 	"github.com/google/uuid"
 
-	"github.com/edgexfoundry/app-functions-sdk-go/appcontext"
-	"github.com/edgexfoundry/app-functions-sdk-go/internal/common"
-	"github.com/edgexfoundry/app-functions-sdk-go/internal/runtime"
-	"github.com/edgexfoundry/app-functions-sdk-go/internal/security"
-	"github.com/edgexfoundry/app-functions-sdk-go/pkg/secure"
+	"github.com/jcerato/app-functions-sdk-go/appcontext"
+	"github.com/jcerato/app-functions-sdk-go/internal/common"
+	"github.com/jcerato/app-functions-sdk-go/internal/runtime"
+	"github.com/jcerato/app-functions-sdk-go/internal/security"
+	"github.com/jcerato/app-functions-sdk-go/pkg/secure"
 )
 
 // Trigger implements Trigger to support Triggers

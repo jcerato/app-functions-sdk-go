@@ -27,7 +27,7 @@ import (
 
 	"github.com/edgexfoundry/go-mod-bootstrap/config"
 
-	"github.com/edgexfoundry/app-functions-sdk-go/internal/security/mock"
+	"github.com/jcerato/app-functions-sdk-go/internal/security/mock"
 
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"

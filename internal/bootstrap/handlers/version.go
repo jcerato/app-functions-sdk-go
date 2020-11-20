@@ -27,9 +27,9 @@ import (
 	"github.com/edgexfoundry/go-mod-bootstrap/di"
 	"github.com/edgexfoundry/go-mod-core-contracts/clients"
 
-	"github.com/edgexfoundry/app-functions-sdk-go/internal"
-	"github.com/edgexfoundry/app-functions-sdk-go/internal/bootstrap/container"
-	"github.com/edgexfoundry/app-functions-sdk-go/internal/common"
+	"github.com/jcerato/app-functions-sdk-go/internal"
+	"github.com/jcerato/app-functions-sdk-go/internal/bootstrap/container"
+	"github.com/jcerato/app-functions-sdk-go/internal/common"
 )
 
 const (

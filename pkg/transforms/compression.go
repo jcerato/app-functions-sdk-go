@@ -24,9 +24,9 @@ import (
 	"encoding/base64"
 	"errors"
 
-	"github.com/edgexfoundry/app-functions-sdk-go/appcontext"
-	"github.com/edgexfoundry/app-functions-sdk-go/pkg/util"
 	"github.com/edgexfoundry/go-mod-core-contracts/clients"
+	"github.com/jcerato/app-functions-sdk-go/appcontext"
+	"github.com/jcerato/app-functions-sdk-go/pkg/util"
 )
 
 type Compression struct {

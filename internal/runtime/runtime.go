@@ -27,13 +27,13 @@ import (
 
 	"github.com/fxamacker/cbor/v2"
 
-	"github.com/edgexfoundry/app-functions-sdk-go/appcontext"
-	"github.com/edgexfoundry/app-functions-sdk-go/internal/common"
-	"github.com/edgexfoundry/app-functions-sdk-go/internal/security"
-	"github.com/edgexfoundry/app-functions-sdk-go/internal/store/db/interfaces"
 	"github.com/edgexfoundry/go-mod-core-contracts/clients"
 	"github.com/edgexfoundry/go-mod-core-contracts/models"
 	"github.com/edgexfoundry/go-mod-messaging/pkg/types"
+	"github.com/jcerato/app-functions-sdk-go/appcontext"
+	"github.com/jcerato/app-functions-sdk-go/internal/common"
+	"github.com/jcerato/app-functions-sdk-go/internal/security"
+	"github.com/jcerato/app-functions-sdk-go/internal/store/db/interfaces"
 )
 
 const unmarshalErrorMessage = "Unable to unmarshal message payload as %s"

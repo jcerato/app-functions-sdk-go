@@ -21,9 +21,9 @@ import (
 	"sync"
 	"time"
 
-	"github.com/edgexfoundry/app-functions-sdk-go/appcontext"
-	"github.com/edgexfoundry/app-functions-sdk-go/internal/common"
-	"github.com/edgexfoundry/app-functions-sdk-go/pkg/util"
+	"github.com/jcerato/app-functions-sdk-go/appcontext"
+	"github.com/jcerato/app-functions-sdk-go/internal/common"
+	"github.com/jcerato/app-functions-sdk-go/pkg/util"
 )
 
 // BatchMode Enum for choosing behavior of Batch. Default is CountAndTime.

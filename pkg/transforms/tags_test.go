@@ -25,7 +25,7 @@ import (
 	"github.com/edgexfoundry/go-mod-core-contracts/clients/logger"
 	"github.com/edgexfoundry/go-mod-core-contracts/models"
 
-	"github.com/edgexfoundry/app-functions-sdk-go/appcontext"
+	"github.com/jcerato/app-functions-sdk-go/appcontext"
 )
 
 var tagsToAdd = map[string]string{
