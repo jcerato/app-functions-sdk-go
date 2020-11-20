@@ -103,13 +103,15 @@ func (sender HTTPSender) httpSend(edgexcontext *appcontext.Context, params []int
 	if usingSecrets {
 		theSecrets, err = edgexcontext.GetSecrets(sender.SecretPath, sender.SecretHeaderName1, sender.SecretHeaderName2)
 		fmt.Println("\n \n \n")
-		fmt.Println("the Secrets : ", theSecrets)
+		fmt.Println("the Secrets : SecretHeaderName1", theSecrets[sender.SecretHeaderName1])
+		fmt.Println("the Secrets : SecretHeaderName2", theSecrets[sender.SecretHeaderName2])
 		fmt.Println("\n \n \n")
 		if err != nil {
 			return false, err
 		}
-		req.Header.Set(sender.SecretHeaderName1, theSecrets[sender.SecretHeaderName1])
-		req.Header.Set(sender.SecretHeaderName2, theSecrets[sender.SecretHeaderName2])
+		//req.Header.Set(sender.SecretHeaderName1, theSecrets[sender.SecretHeaderName1])
+		//req.Header.Set(sender.SecretHeaderName2, theSecrets[sender.SecretHeaderName2])
+		req.SetBasicAuth(theSecrets[sender.SecretHeaderName1], theSecrets[sender.SecretHeaderName2])
 	}
 
 	req.Header.Set("Content-Type", sender.MimeType)
