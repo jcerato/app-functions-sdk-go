@@ -317,7 +317,7 @@ func (dynamic AppFunctionsSDKConfigurable) HTTPPut(parameters map[string]string)
 	secretPath := parameters[SecretPath]
 	var transform transforms.HTTPSender
 	if secretHeaderName1 != "" && secretPath != "" {
-		transform = transforms.NewHTTPSenderWithSecretHeader(url, mimeType, persistOnError, secretHeaderName1, secretHeaderName2 secretPath)
+		transform = transforms.NewHTTPSenderWithSecretHeader(url, mimeType, persistOnError, secretHeaderName1, secretHeaderName2, secretPath)
 	} else {
 		transform = transforms.NewHTTPSender(url, mimeType, persistOnError)
 	}
