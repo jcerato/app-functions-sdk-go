@@ -31,11 +31,12 @@ import (
 
 // HTTPSender ...
 type HTTPSender struct {
-	URL              string
-	MimeType         string
-	PersistOnError   bool
-	SecretHeaderName string
-	SecretPath       string
+	URL               string
+	MimeType          string
+	PersistOnError    bool
+	SecretHeaderName1 string
+	SecretHeaderName2 string
+	SecretPath        string
 }
 
 // NewHTTPSender creates, initializes and returns a new instance of HTTPSender
