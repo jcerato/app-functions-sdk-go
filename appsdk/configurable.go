@@ -250,11 +250,12 @@ func (dynamic AppFunctionsSDKConfigurable) HTTPPost(parameters map[string]string
 	url = strings.TrimSpace(url)
 	mimeType = strings.TrimSpace(mimeType)
 
-	secretHeaderName := parameters[SecretHeaderName]
+	secretHeaderName1 := parameters[SecretHeaderName1]
+	secretHeaderName2 := parameters[SecretHeaderName2]
 	secretPath := parameters[SecretPath]
 	var transform transforms.HTTPSender
-	if secretHeaderName != "" && secretPath != "" {
-		transform = transforms.NewHTTPSenderWithSecretHeader(url, mimeType, persistOnError, secretHeaderName, secretPath)
+	if secretHeaderName1 != "" && secretPath != "" {
+		transform = transforms.NewHTTPSenderWithSecretHeader(url, mimeType, persistOnError, secretHeaderName1, secretHeaderName2, secretPath)
 	} else {
 		transform = transforms.NewHTTPSender(url, mimeType, persistOnError)
 	}
