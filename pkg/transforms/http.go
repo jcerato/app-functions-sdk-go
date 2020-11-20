@@ -102,6 +102,9 @@ func (sender HTTPSender) httpSend(edgexcontext *appcontext.Context, params []int
 	var theSecrets map[string]string
 	if usingSecrets {
 		theSecrets, err = edgexcontext.GetSecrets(sender.SecretPath, sender.SecretHeaderName1, sender.SecretHeaderName2)
+		fmt.Println("\n \n \n")
+		fmt.Println("the Secrets : ", theSecrets)
+		fmt.Println("\n \n \n")
 		if err != nil {
 			return false, err
 		}
