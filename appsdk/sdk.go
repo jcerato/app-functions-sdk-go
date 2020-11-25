@@ -155,7 +155,7 @@ func (sdk *AppFunctionsSDK) AddBackgroundPublisher(capacity int) BackgroundPubli
 // the specified port.
 func (sdk *AppFunctionsSDK) MakeItRun() error {
 	httpErrors := make(chan error)
-	defer close(httpErrors)
+	
 
 	sdk.runtime = &runtime.GolangRuntime{
 		TargetType: sdk.TargetType,
@@ -217,7 +217,7 @@ func (sdk *AppFunctionsSDK) MakeItRun() error {
 		deferredFunc()
 		fmt.Println("Called the deferred function")
 	}
-
+	defer close(httpErrors)
 	return err
 }
 
