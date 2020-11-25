@@ -215,6 +215,7 @@ func (sdk *AppFunctionsSDK) MakeItRun() error {
 	// These are things like un-register from the Registry, disconnect from the Message Bus, etc
 	for _, deferredFunc := range sdk.deferredFunctions {
 		deferredFunc()
+		fmt.Println("Called the deferred func : ", string(deferredFunc))
 	}
 
 	return err

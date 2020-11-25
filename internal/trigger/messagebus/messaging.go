@@ -142,6 +142,8 @@ func (trigger *Trigger) Initialize(appWg *sync.WaitGroup, appCtx context.Context
 		err := trigger.client.Disconnect()
 		if err != nil {
 			logger.Error("Unable to disconnect from the message bus", "error", err.Error())
+		} else {
+			fmt.Println("Disconnected from the message bus correctly with error code : ", err)
 		}
 	}
 	return deferred, nil

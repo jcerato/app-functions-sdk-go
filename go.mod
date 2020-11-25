@@ -7,6 +7,7 @@ require (
 	github.com/diegoholiveira/jsonlogic v1.0.1-0.20200220175622-ab7989be08b9
 	github.com/eclipse/paho.mqtt.golang v1.2.0
 	github.com/edgexfoundry/app-functions-sdk-go v1.3.0 // indirect
+	github.com/edgexfoundry/device-sdk-go v1.3.0 // indirect
 	github.com/edgexfoundry/go-mod-bootstrap v0.0.57
 	github.com/edgexfoundry/go-mod-core-contracts v0.1.112
 	github.com/edgexfoundry/go-mod-messaging v0.1.28
@@ -16,6 +17,7 @@ require (
 	github.com/gomodule/redigo v2.0.0+incompatible
 	github.com/google/uuid v1.1.2
 	github.com/gorilla/mux v1.8.0
+	github.com/mediocregopher/radix/v3 v3.6.0 // indirect
 	github.com/stretchr/testify v1.6.1
 	go.mongodb.org/mongo-driver v1.1.1
 )
