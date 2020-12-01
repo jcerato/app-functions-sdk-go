@@ -110,7 +110,7 @@ func (context *Context) PushToCoreData(deviceName string, readingName string, va
 	if err != nil {
 		return nil, err
 	}
-	fmt.Println("Val of the reading to be pushed to coredata is : ", val)
+	fmt.Println("Val of the reading to be pushed to coredata is : ", string(val))
 	newReading := models.Reading{
 		Value:  string(val),
 		Origin: now,
