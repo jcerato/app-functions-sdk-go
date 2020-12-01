@@ -110,6 +110,7 @@ func (context *Context) PushToCoreData(deviceName string, readingName string, va
 	if err != nil {
 		return nil, err
 	}
+	fmt.Println("Val of the reading to be pushed to coredata is : ", val)
 	newReading := models.Reading{
 		Value:  string(val),
 		Origin: now,
@@ -129,6 +130,7 @@ func (context *Context) PushToCoreData(deviceName string, readingName string, va
 	correlation := uuid.New().String()
 	ctx := syscontext.WithValue(syscontext.Background(), clients.CorrelationHeader, correlation)
 	result, err := context.EventClient.Add(ctx, newEdgeXEvent)
+	fmt.Println("ID of the edgex event created by the export service : ", result)
 	if err != nil {
 		return nil, err
 	}
