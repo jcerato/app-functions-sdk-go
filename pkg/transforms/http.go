@@ -89,7 +89,7 @@ func (sender HTTPSender) httpSend(edgexcontext *appcontext.Context, params []int
 		return false, err
 	}
 	fmt.Println("\n \n \n")
-	fmt.Println("This is the exportData inside the http.go/httpSend function : ", exportData)
+	fmt.Printf("This is the exportData inside the http.go/httpSend function : %s", exportData)
 	fmt.Println("\n \n \n")
 	usingSecrets, err := sender.determineIfUsingSecrets()
 	if err != nil {
