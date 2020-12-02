@@ -130,7 +130,7 @@ func (sender HTTPSender) httpSend(edgexcontext *appcontext.Context, params []int
 	}
 	defer response.Body.Close()
 	edgexcontext.LoggingClient.Debug(fmt.Sprintf("Response: %s", response.Status))
-	edgexcontext.LoggingClient.Debug(fmt.Sprintf("Sent data: %s", string(exportData)))
+	edgexcontext.LoggingClient.Debug(fmt.Sprintf("Sent data: %s", exportData))
 	bodyBytes, errReadingBody := ioutil.ReadAll(response.Body)
 	if errReadingBody != nil {
 		sender.setRetryData(edgexcontext, exportData)
