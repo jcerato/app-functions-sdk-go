@@ -124,15 +124,14 @@ func (sender HTTPSender) httpSend(edgexcontext *appcontext.Context, params []int
 	}
 	defer response.Body.Close()
 	edgexcontext.LoggingClient.Debug(fmt.Sprintf("Response: %s", response.Status))
-	//
-	fmt.Println("This is the response body : ", response.Body)
 	edgexcontext.LoggingClient.Debug(fmt.Sprintf("Sent data: %s", string(exportData)))
 	bodyBytes, errReadingBody := ioutil.ReadAll(response.Body)
 	if errReadingBody != nil {
 		sender.setRetryData(edgexcontext, exportData)
 		return false, errReadingBody
 	}
-
+	//
+	fmt.Printf("This is the response body : %s ", bodyBytes)
 	edgexcontext.LoggingClient.Trace("Data exported", "Transport", "HTTP", clients.CorrelationHeader, edgexcontext.CorrelationID)
 
 	// continues the pipeline if we get a 2xx response, stops pipeline if non-2xx response
