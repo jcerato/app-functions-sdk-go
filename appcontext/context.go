@@ -128,11 +128,14 @@ func (context *Context) PushToCoreData(deviceName string, readingName string, va
 		Readings: readings,
 	}
 	
-	fmt.Println("new EdgeXEvent created by the PushToCoreData : ", newReading)
+	fmt.Println("new EdgeXEvent created by the PushToCoreData : ", newEdgeXEvent)
 
 	correlation := uuid.New().String()
+	fmt.Println("correlation : ", correlation)
 	ctx := syscontext.WithValue(syscontext.Background(), clients.CorrelationHeader, correlation)
+	fmt.Println("ctx : ", ctx)
 	result, err := context.EventClient.Add(ctx, newEdgeXEvent)
+	fmt.Println("Error returned from the Add function : ", err)
 	fmt.Println("ID of the edgex event created by the export service : ", result)
 	if err != nil {
 		return nil, err
