@@ -102,7 +102,7 @@ func (sender HTTPSender) httpSend(edgexcontext *appcontext.Context, params []int
 		return false, err
 	}
 	fmt.Println("\n \n \n")
-	fmt.Println("This is the body request inside the http.go/httpSend function : ", bytes.NewReader(req.Body))
+	fmt.Println("This is the body request inside the http.go/httpSend function : ", req.Body)
 	fmt.Println("\n \n \n")
 
 	var theSecrets map[string]string
