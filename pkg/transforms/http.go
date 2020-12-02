@@ -124,6 +124,8 @@ func (sender HTTPSender) httpSend(edgexcontext *appcontext.Context, params []int
 	}
 	defer response.Body.Close()
 	edgexcontext.LoggingClient.Debug(fmt.Sprintf("Response: %s", response.Status))
+	//
+	fmt.Println("This is the response body : ", response.Body)
 	edgexcontext.LoggingClient.Debug(fmt.Sprintf("Sent data: %s", string(exportData)))
 	bodyBytes, errReadingBody := ioutil.ReadAll(response.Body)
 	if errReadingBody != nil {
