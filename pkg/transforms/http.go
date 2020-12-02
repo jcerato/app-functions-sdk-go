@@ -88,7 +88,9 @@ func (sender HTTPSender) httpSend(edgexcontext *appcontext.Context, params []int
 	if err != nil {
 		return false, err
 	}
-
+	fmt.Println("\n \n \n")
+	fmt.Println("This is the exportData inside the http.go/httpSend function : ", exportData)
+	fmt.Println("\n \n \n")
 	usingSecrets, err := sender.determineIfUsingSecrets()
 	if err != nil {
 		return false, err
@@ -99,6 +101,10 @@ func (sender HTTPSender) httpSend(edgexcontext *appcontext.Context, params []int
 	if err != nil {
 		return false, err
 	}
+	fmt.Println("\n \n \n")
+	fmt.Println("This is the body request inside the http.go/httpSend function : ", bytes.NewReader(req.Body))
+	fmt.Println("\n \n \n")
+
 	var theSecrets map[string]string
 	if usingSecrets {
 		theSecrets, err = edgexcontext.GetSecrets(sender.SecretPath, sender.SecretHeaderName1, sender.SecretHeaderName2)
