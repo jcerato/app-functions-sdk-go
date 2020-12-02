@@ -117,15 +117,18 @@ func (context *Context) PushToCoreData(deviceName string, readingName string, va
 		Device: deviceName,
 		Name:   readingName,
 	}
-
+	fmt.Println("new Reading created by the PushToCoreData : ", newReading)
 	readings := make([]models.Reading, 0, 1)
 	readings = append(readings, newReading)
+	fmt.Println("new Readings created by the PushToCoreData : ", readings)
 
 	newEdgeXEvent := &models.Event{
 		Device:   deviceName,
 		Origin:   now,
 		Readings: readings,
 	}
+	
+	fmt.Println("new EdgeXEvent created by the PushToCoreData : ", newReading)
 
 	correlation := uuid.New().String()
 	ctx := syscontext.WithValue(syscontext.Background(), clients.CorrelationHeader, correlation)
