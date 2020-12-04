@@ -163,31 +163,26 @@ func (sdk *AppFunctionsSDK) MakeItRun() error {
 	}
 
 	sdk.runtime.Initialize(sdk.storeClient, sdk.secretProvider)
-	fmt.Println("Finita la fase di inizializzazione")
+	
 	sdk.runtime.SetTransforms(sdk.transforms)
-	fmt.Println("Finita la SetTransforms")
+	
 
 	// determine input type and create trigger for it
 	t := sdk.setupTrigger(sdk.config, sdk.runtime)
 	if t == nil {
 		return errors.New("Failed to create Trigger")
-	} else {
-		fmt.Println("Trigger setted up")
-	}
+	} 
 
 	// Initialize the trigger (i.e. start a web server, or connect to message bus)
 	deferred, err := t.Initialize(sdk.appWg, sdk.appCtx, sdk.backgroundChannel)
 	if err != nil {
 		sdk.LoggingClient.Error(err.Error())
 		return errors.New("Failed to initialize Trigger")
-	} else {
-		fmt.Println("Trigger initialized correctly")
-	}
+	} 
 
 	// deferred is a a function that needs to be called when services exits.
 	sdk.addDeferred(deferred)
-	fmt.Println("Added deferred function")
-
+	
 	if sdk.config.Writable.StoreAndForward.Enabled {
 		sdk.startStoreForward()
 	} else {
@@ -222,7 +217,6 @@ func (sdk *AppFunctionsSDK) MakeItRun() error {
 	// These are things like un-register from the Registry, disconnect from the Message Bus, etc
 	for _, deferredFunc := range sdk.deferredFunctions {
 		deferredFunc()
-		fmt.Println("Called the deferred function")
 	}
 	defer close(httpErrors)
 	return err

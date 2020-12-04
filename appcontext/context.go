@@ -110,33 +110,27 @@ func (context *Context) PushToCoreData(deviceName string, readingName string, va
 	if err != nil {
 		return nil, err
 	}
-	fmt.Println("Val of the reading to be pushed to coredata is : ", string(val))
+	
 	newReading := models.Reading{
 		Value:  string(val),
 		Origin: now,
 		Device: deviceName,
 		Name:   readingName,
 	}
-	fmt.Println("new Reading created by the PushToCoreData : ", newReading)
+	
 	readings := make([]models.Reading, 0, 1)
 	readings = append(readings, newReading)
-	fmt.Println("new Readings created by the PushToCoreData : ", readings)
-
+	
 	newEdgeXEvent := &models.Event{
 		Device:   deviceName,
 		Origin:   now,
 		Readings: readings,
 	}
 	
-	fmt.Println("new EdgeXEvent created by the PushToCoreData : ", newEdgeXEvent)
-
 	correlation := uuid.New().String()
-	fmt.Println("correlation : ", correlation)
 	ctx := syscontext.WithValue(syscontext.Background(), clients.CorrelationHeader, correlation)
-	fmt.Println("ctx : ", ctx)
 	result, err := context.EventClient.Add(ctx, newEdgeXEvent)
-	fmt.Println("Error returned from the Add function : ", err)
-	fmt.Println("ID of the edgex event created by the export service : ", result)
+	
 	if err != nil {
 		return nil, err
 	}

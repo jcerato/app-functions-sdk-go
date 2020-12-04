@@ -88,9 +88,7 @@ func (sender HTTPSender) httpSend(edgexcontext *appcontext.Context, params []int
 	if err != nil {
 		return false, err
 	}
-	fmt.Println("\n \n \n")
-	fmt.Printf("This is the exportData inside the http.go/httpSend function : %s", exportData)
-	fmt.Println("\n \n \n")
+
 	usingSecrets, err := sender.determineIfUsingSecrets()
 	if err != nil {
 		return false, err
@@ -101,22 +99,14 @@ func (sender HTTPSender) httpSend(edgexcontext *appcontext.Context, params []int
 	if err != nil {
 		return false, err
 	}
-	fmt.Println("\n \n \n")
-	fmt.Println("This is the body request inside the http.go/httpSend function : ", req.Body)
-	fmt.Println("\n \n \n")
-
+	
 	var theSecrets map[string]string
 	if usingSecrets {
 		theSecrets, err = edgexcontext.GetSecrets(sender.SecretPath, sender.SecretHeaderName1, sender.SecretHeaderName2)
-		fmt.Println("\n \n \n")
-		fmt.Println("the Secrets : SecretHeaderName1", theSecrets[sender.SecretHeaderName1])
-		fmt.Println("the Secrets : SecretHeaderName2", theSecrets[sender.SecretHeaderName2])
-		fmt.Println("\n \n \n")
 		if err != nil {
 			return false, err
 		}
-		//req.Header.Set(sender.SecretHeaderName1, theSecrets[sender.SecretHeaderName1])
-		//req.Header.Set(sender.SecretHeaderName2, theSecrets[sender.SecretHeaderName2])
+		
 		req.SetBasicAuth(theSecrets[sender.SecretHeaderName1], theSecrets[sender.SecretHeaderName2])
 	}
 
@@ -136,8 +126,7 @@ func (sender HTTPSender) httpSend(edgexcontext *appcontext.Context, params []int
 		sender.setRetryData(edgexcontext, exportData)
 		return false, errReadingBody
 	}
-	//
-	fmt.Printf("This is the response body : %s ", bodyBytes)
+	
 	edgexcontext.LoggingClient.Trace("Data exported", "Transport", "HTTP", clients.CorrelationHeader, edgexcontext.CorrelationID)
 
 	// continues the pipeline if we get a 2xx response, stops pipeline if non-2xx response
