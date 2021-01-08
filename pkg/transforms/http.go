@@ -22,6 +22,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
+	"time"
 
 	"github.com/jcerato/app-functions-sdk-go/pkg/util"
 
@@ -95,7 +96,7 @@ func (sender HTTPSender) httpSend(edgexcontext *appcontext.Context, params []int
 	}
 
 	client := &http.Client{
-		Timeout: 5 * time.Second,
+		Timeout: 7 * time.Second,
 	}
 	
 	req, err := http.NewRequest(method, sender.URL, bytes.NewReader(exportData))
