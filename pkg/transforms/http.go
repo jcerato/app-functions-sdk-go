@@ -96,7 +96,7 @@ func (sender HTTPSender) httpSend(edgexcontext *appcontext.Context, params []int
 	}
 
 	client := &http.Client{
-		Timeout: 7 * time.Second,
+		Timeout: 10 * time.Second,
 	}
 	
 	req, err := http.NewRequest(method, sender.URL, bytes.NewReader(exportData))
