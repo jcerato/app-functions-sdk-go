@@ -94,7 +94,10 @@ func (sender HTTPSender) httpSend(edgexcontext *appcontext.Context, params []int
 		return false, err
 	}
 
-	client := &http.Client{}
+	client := &http.Client{
+		Timeout: 5 * time.Second,
+	}
+	
 	req, err := http.NewRequest(method, sender.URL, bytes.NewReader(exportData))
 	if err != nil {
 		return false, err
