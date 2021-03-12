@@ -96,7 +96,7 @@ func (sender HTTPSender) httpSend(edgexcontext *appcontext.Context, params []int
 	}
 
 	client := &http.Client{
-		Timeout: 1 * time.Second,
+		Timeout: 3 * time.Second,
 	}
 	
 	
@@ -117,15 +117,15 @@ func (sender HTTPSender) httpSend(edgexcontext *appcontext.Context, params []int
 
 	req.Header.Set("Content-Type", sender.MimeType)
 
-	edgexcontext.LoggingClient.Debug("POSTing data")
+	edgexcontext.LoggingClient.Info("POSTing data")
 	response, err := client.Do(req)
 	if err != nil {
 		sender.setRetryData(edgexcontext, exportData)
 		return false, err
 	}
 	defer response.Body.Close()
-	edgexcontext.LoggingClient.Debug(fmt.Sprintf("Response: %s", response.Status))
-	edgexcontext.LoggingClient.Debug(fmt.Sprintf("Sent data: %s", exportData))
+	edgexcontext.LoggingClient.Info(fmt.Sprintf("Response: %s", response.Status))
+	edgexcontext.LoggingClient.Info(fmt.Sprintf("Sent data: %s", exportData))
 	bodyBytes, errReadingBody := ioutil.ReadAll(response.Body)
 	if errReadingBody != nil {
 		sender.setRetryData(edgexcontext, exportData)

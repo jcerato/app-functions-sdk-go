@@ -236,6 +236,10 @@ func (sf *storeForwardInfo) retryExportFunction(item contracts.StoredObject, con
 
 	edgexContext.LoggingClient.Trace("Retrying stored data", clients.CorrelationHeader, edgexContext.CorrelationID)
 
+	edgexContext.LoggingClient.Info(fmt.Sprintf("Pipeline position : ", item.PipelinePosition))
+	item.PipelinePosition = item.PipelinePosition - 1
+	edgexContext.LoggingClient.Info(fmt.Sprintf("Pipeline position after decrement : ", item.PipelinePosition))
+	
 	return sf.runtime.ExecutePipeline(
 		item.Payload,
 		"",
